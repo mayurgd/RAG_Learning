@@ -1,0 +1,24 @@
+[project]
+name = "url_crawler"
+version = "0.1.0"
+description = "url_crawler using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "crewai[tools]>=0.102.0,<1.0.0",
+    "firecrawl-py>=1.13.5",
+]
+
+[project.scripts]
+url_crawler = "url_crawler.main:run"
+run_crew = "url_crawler.main:run"
+train = "url_crawler.main:train"
+replay = "url_crawler.main:replay"
+test = "url_crawler.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"

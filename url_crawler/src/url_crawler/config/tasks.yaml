@@ -1,0 +1,7 @@
+scrape_task:
+  description: >
+    Extract the main content from the homepage of https://www.lilly.com/in/ as per the provided {query}
+  expected_output: >
+    The content from https://www.lilly.com/in/ 's homepage.
+  agent: web_scraper
+

@@ -1,0 +1,30 @@
+query_creation_task:
+  description: >
+    Construct and execute an optimized SQL query to retrieve the required data 
+    based on the given request: {query}. Ensure the query is efficient and correctly 
+    structured to return accurate results.
+  expected_output: >
+    A well-structured dataset containing the relevant database records based on the query.
+  agent: database_developer
+
+
+analysis_task:
+  description: >
+    Perform a thorough analysis of the dataset retrieved for the request: {query}. 
+    Identify key patterns, trends, and insights, ensuring the analysis is data-driven 
+    and well-structured. Use statistical techniques and visualizations where necessary.
+  expected_output: >
+    A detailed and insightful analysis that includes key findings, trends, anomalies, 
+    and actionable recommendations based on the data.
+  agent: data_analyst
+
+
+reporting_task:
+  description: >
+    Summarize the key findings from the analysis into a concise executive summary. 
+    The summary should be clear, actionable, and written in less than 100 words, 
+    highlighting the most important insights and recommendations.
+  expected_output: >
+    A well-structured Markdown report containing a concise executive summary 
+    with key takeaways and actionable insights.
+  agent: report_writer
