@@ -10,8 +10,7 @@ from langchain.schema.runnable import Runnable
 from langchain.docstore.document import Document
 from pydantic import BaseModel, Field, PrivateAttr
 from langchain_community.vectorstores import FAISS
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
-
+from langchain_community.docstore.in_memory import InMemoryDocstore
 
 import v7.constants as const
 from v7.logger import loggers_utils
@@ -150,7 +149,7 @@ class VectorDbBM25Retriever(BaseModel, Runnable):
 @time_it
 def create_vector_store(
     docs: List[Document],
-    embedding_model: Optional[GoogleGenerativeAIEmbeddings] = None,
+    embedding_model=None,
     re_run: bool = False,
     use_hnsw: bool = False,
 ) -> FAISS:
@@ -162,8 +161,7 @@ def create_vector_store(
 
     Args:
         docs (List[Document]): A list of documents containing `page_content` and `metadata`.
-        embedding_model (Optional[GoogleGenerativeAIEmbeddings], optional): The embedding model used for vectorization.
-            Defaults to GoogleGenerativeAIEmbeddings(model="models/embedding-001") if not provided.
+        embedding_model : The embedding model used for vectorization.
         re_run (bool, optional): Whether to recreate the vector store if it already exists. Defaults to False.
         use_hnsw (bool, optional): Whether to use HNSW indexing in FAISS for approximate nearest neighbors. Defaults to False.
 
@@ -172,10 +170,6 @@ def create_vector_store(
     """
 
     logger.info("Starting create_vector_store function.")
-
-    # Initialize default embedding model if not provided
-    if embedding_model is None:
-        embedding_model = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
 
     if not file_exists(os.path.join(const.VECTOR_INDEX_LOC, "index.faiss")):
         logger.warning("FAISS index file not found. Creating a new one.")
@@ -193,8 +187,10 @@ def create_vector_store(
         logger.info(
             "No existing FAISS index found or recreation requested. Processing documents."
         )
+        cleaned_texts = [doc.page_content for doc in docs]
+
         # Generate document embeddings
-        embeddings = embedding_model.embed_documents([doc.page_content for doc in docs])
+        embeddings = embedding_model.embed_documents(cleaned_texts)
         logger.info("Generated embeddings for %d documents.", len(docs))
 
         # Determine embedding dimensions
@@ -213,7 +209,12 @@ def create_vector_store(
         logger.info("Added embeddings to FAISS index.")
 
         # Create FAISS vector store
-        vector_store = FAISS.from_documents(docs, embedding_model)
+        vector_store = FAISS(
+            embedding_function=embedding_model,
+            index=index,
+            docstore=InMemoryDocstore(),
+            index_to_docstore_id={},
+        ).from_documents(cleaned_texts, embedding_model)
         logger.info("Wrapped FAISS index with LangChain's FAISS vector store.")
 
         # Save vector store locally

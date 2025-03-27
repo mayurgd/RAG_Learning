@@ -26,6 +26,7 @@ from v7.backend.vector_store import (
     VectorDbBM25Retriever,
 )
 from langchain_openai import OpenAIEmbeddings
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
 create_directories_for_path(const.LOG_FILE_LOC)
 
@@ -43,6 +44,7 @@ cleaned_texts = load_and_process_data(chunk_size=500, chunk_overlap=200)
 vector_store = create_vector_store(
     docs=cleaned_texts,
     # embedding_model=OpenAIEmbeddings(model="text-embedding-3-large")
+    embedding_model=GoogleGenerativeAIEmbeddings(model="models/embedding-001"),
 )
 bm25 = create_bm25_index(docs=cleaned_texts)
 k = 10
