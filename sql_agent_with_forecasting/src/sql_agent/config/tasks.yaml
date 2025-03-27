@@ -1,0 +1,54 @@
+query_creation_task:
+  description: >
+    Construct and execute an optimized SQL query to retrieve the required data 
+    based on the given request: {query}. Ensure the query is efficient and correctly 
+    structured to return accurate results. If no data is found, respond with 
+    "No data found for the requested query."
+  expected_output: >
+    A well-structured dataset containing the relevant database records based on the query 
+    or a "No data found" message if applicable.
+  agent: database_developer
+
+
+analysis_task:
+  description: >
+    Perform a thorough analysis of the dataset retrieved for the request: {query}. 
+    Identify key patterns, trends, and insights using statistical techniques and visualizations. 
+    Highlight meaningful findings, trends, anomalies, and actionable recommendations. 
+    If no data is available, acknowledge the absence and provide brief context.
+  expected_output: >
+    A detailed and insightful analysis that includes key findings, statistical summaries, 
+    visualizations, and actionable recommendations, or a brief acknowledgment if no data is found.
+  agent: data_analyst
+
+code_execution_task:
+  description: >
+    Execute the Python code provided by the data_analyst agent. 
+    The goal is to run the code safely and return the outputs, 
+    including visualizations, statistics, or any generated artifacts.
+  expected_output: >
+    - Install the libraries that are sent as required from data analyst.
+    - Successfully executed Python code.
+    - Generated visualizations saved as images (PNG, JPG) if applicable.
+    - Statistical summaries or other textual outputs returned.
+    - Error messages if the code execution fails.
+  agent: code_executor
+  constraints:
+    - If the code contains errors, capture and return the traceback or error message.
+    - Do not modify the code during execution; run it as provided.
+    - Save any generated visualizations or data outputs to a specified directory.
+    - Ensure logs and outputs are properly organized and referenced.
+  output_files:
+    - "/src/sql_agent/outputs/visualization_{timestamp}.png"
+    - "/src/sql_agent/outputs/summary_{timestamp}.txt"
+    
+reporting_task:
+  description: >
+    Summarize the key findings from the analysis into a concise executive summary. 
+    The summary should be clear, actionable, and written in less than 100 words, 
+    highlighting the most important insights and recommendations. Ensure the response 
+    is aligned with the query context: {query}. If no data is found, acknowledge it professionally.
+  expected_output: >
+    A well-structured Markdown report containing a concise executive summary 
+    with key takeaways and actionable insights or an acknowledgment of data unavailability.
+  agent: report_writer
