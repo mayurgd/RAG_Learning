@@ -45,7 +45,7 @@ class SqlAgent:
     def reporting_task(self) -> Task:
         return Task(
             config=self.tasks_config["reporting_task"],
-            output_file="sql_agent/src/sql_agent/report.md",
+            output_file="/src/sql_agent/report.md",
         )
 
     @crew
