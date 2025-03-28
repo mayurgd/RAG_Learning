@@ -6,18 +6,20 @@ from dotenv import load_dotenv
 
 load_dotenv()
 from src.sql_agent.tools.nl2sql_tool import NL2SQLTool
-from crewai_tools import CodeInterpreterTool
+from crewai_tools import FileWriterTool, FileReadTool, CodeInterpreterTool
 
+# Initialize the tool
 nl2sql = NL2SQLTool(db_uri="sqlite:///src/sql_agent/sales.db")
-code_interpreter = CodeInterpreterTool()
+file_writer_tool = FileWriterTool()
+file_read_tool = FileReadTool()
+code_interpreter = CodeInterpreterTool(
+    user_dockerfile_path="/Users/mayurgd/Documents/CodingSpace/RAG_Learning/sql_agent_with_forecasting/src/sql_agent/Docker"
+)
 
 
 @CrewBase
 class SqlAgent:
     """SqlAgent crew"""
-
-    # Define paths for saving outputs
-    output_dir = "/outputs"
 
     agents_config = "config/agents.yaml"
     tasks_config = "config/tasks.yaml"
@@ -30,7 +32,7 @@ class SqlAgent:
         return Agent(
             config=self.agents_config["database_developer"],
             verbose=True,
-            tools=[nl2sql],
+            tools=[nl2sql, file_writer_tool],
         )
 
     @agent
@@ -38,26 +40,8 @@ class SqlAgent:
         return Agent(
             config=self.agents_config["data_analyst"],
             verbose=True,
-        )
-
-    @agent
-    def code_executor(self) -> Agent:
-        return Agent(
-            config=self.agents_config["code_executor"],
-            verbose=True,
-            output_files={
-                "data": f"{self.output_dir}/analysis_output_{self.timestamp}.csv",
-                "visualization": f"{self.output_dir}/visualization_{self.timestamp}.png",
-            },
-            tools=[code_interpreter],
-        )
-
-    @agent
-    def report_writer(self) -> Agent:
-        return Agent(
-            config=self.agents_config["report_writer"],
-            verbose=True,
-            output_file=f"{self.output_dir}/report_{self.timestamp}.md",
+            tools=[code_interpreter, file_writer_tool],
+            output_file=f"report_{self.timestamp}.md",
         )
 
     @task
@@ -68,23 +52,8 @@ class SqlAgent:
 
     @task
     def analysis_task(self) -> Task:
-        return Task(config=self.tasks_config["analysis_task"], allow_delegation=True)
-
-    @task
-    def code_execution_task(self) -> Task:
         return Task(
-            config=self.tasks_config["code_execution_task"],
-            output_files={
-                "data": f"{self.output_dir}/analysis_output_{self.timestamp}.csv",
-                "visualization": f"{self.output_dir}/visualization_{self.timestamp}.png",
-            },
-        )
-
-    @task
-    def reporting_task(self) -> Task:
-        return Task(
-            config=self.tasks_config["reporting_task"],
-            output_file=f"{self.output_dir}/report_{self.timestamp}.md",
+            config=self.tasks_config["analysis_task"],
         )
 
     @crew

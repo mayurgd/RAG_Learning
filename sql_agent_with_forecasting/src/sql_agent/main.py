@@ -13,7 +13,9 @@ def run():
     """
     Run the crew.
     """
-    inputs = {"query": "how are the sales pattern for product name B?"}
+    inputs = {
+        "query": "give daily sales graph of product name B, also provide additional analysis data."
+    }
 
     try:
         SqlAgent().crew().kickoff(inputs=inputs)
