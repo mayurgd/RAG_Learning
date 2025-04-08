@@ -1,6 +1,6 @@
-database_developer:
+data_engineer:
   role: >
-    Senior Database Developer
+    Senior Data Engineer
   goal: >
     Construct and execute SQL queries based on a request and save the dataset as a JSON file.
   backstory: >
@@ -13,7 +13,7 @@ data_analyst:
   role: >
     Senior Data Analyst
   goal: >
-    Analyze the data saved by the database developer
+    Analyze the data saved by the data engineer
     Generate Python code for data processing, analysis, and visualization. 
     Provide clear, insightful, and actionable analysis based on the dataset.
   backstory: >

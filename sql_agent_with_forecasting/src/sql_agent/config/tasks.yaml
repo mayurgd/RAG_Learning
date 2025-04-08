@@ -9,7 +9,7 @@ query_creation_task:
     A well-structured dataset containing the relevant database records based on the query 
     or a "No data found for the requested query." message if applicable.
     Dataset stored in a json file
-  agent: database_developer
+  agent: data_engineer
 
 
 analysis_task:
@@ -19,6 +19,7 @@ analysis_task:
     Highlight meaningful findings, trends, anomalies, and actionable recommendations. 
     If no data is available, acknowledge the absence and provide brief context.
     Save summary to a markdown file.
+    Code should have a result variable that will store all the summary stats.
   expected_output: >
     A detailed and insightful analysis that includes key findings, statistical summaries, 
     visualizations, and actionable recommendations, or a brief acknowledgment if no data is found.

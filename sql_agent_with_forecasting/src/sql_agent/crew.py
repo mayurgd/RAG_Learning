@@ -12,9 +12,7 @@ from crewai_tools import FileWriterTool, FileReadTool, CodeInterpreterTool
 nl2sql = NL2SQLTool(db_uri="sqlite:///src/sql_agent/sales.db")
 file_writer_tool = FileWriterTool()
 file_read_tool = FileReadTool()
-code_interpreter = CodeInterpreterTool(
-    user_dockerfile_path="/Users/mayurgd/Documents/CodingSpace/RAG_Learning/sql_agent_with_forecasting/src/sql_agent/Docker"
-)
+code_interpreter = CodeInterpreterTool(unsafe_mode=True)
 
 
 @CrewBase
@@ -28,9 +26,9 @@ class SqlAgent:
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
     @agent
-    def database_developer(self) -> Agent:
+    def data_engineer(self) -> Agent:
         return Agent(
-            config=self.agents_config["database_developer"],
+            config=self.agents_config["data_engineer"],
             verbose=True,
             tools=[nl2sql, file_writer_tool],
         )

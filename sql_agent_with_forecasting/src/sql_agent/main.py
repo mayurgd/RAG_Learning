@@ -13,7 +13,7 @@ def run():
     """
     Run the crew.
     """
-    inputs = {"query": "What are sales patterns for product name B"}
+    inputs = {"query": "Analyze the sales patterns for product name B"}
 
     try:
         SqlAgent().crew().kickoff(inputs=inputs)
