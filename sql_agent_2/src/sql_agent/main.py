@@ -1,21 +1,18 @@
 #!/usr/bin/env python
 import warnings
-
+from fastapi import FastAPI
 from src.sql_agent.crew import SqlAgent
+from src.sql_agent.models import AgentQuery
 
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 
+app = FastAPI()
 
-def run():
-    """
-    Run the crew.
-    """
-    inputs = {"query": "Analyze the sales patterns for product name B"}
 
+@app.post("/query-agent/")
+async def query_agent(request: AgentQuery):
+    input = {"query": request.query}
     try:
-        SqlAgent().crew().kickoff(inputs=inputs)
+        SqlAgent().crew().kickoff(inputs=input)
     except Exception as e:
         raise Exception(f"An error occurred while running the crew: {e}")
-
-
-run()

@@ -9,6 +9,8 @@ query_creation_task:
     A well-structured dataset containing the relevant database records based on the query 
     or a "No data found for the requested query." message if applicable.
     Dataset stored in a json file
+    Gather the output names and use `GatherAndMoveOutputsTool` to store outputs in a single folder named as outputs.
+    If all output files is already saved in outputs folder then no need to execute this tool
   agent: data_engineer
 
 
@@ -24,4 +26,6 @@ analysis_task:
     A detailed and insightful analysis that includes key findings, statistical summaries, 
     visualizations, and actionable recommendations, or a brief acknowledgment if no data is found.
     Summary reports saved to a markdown file.
+    Gather the output names and use `GatherAndMoveOutputsTool` to store outputs in a single folder named as outputs
+    If all output files is already saved in outputs folder then no need to execute this tool
   agent: data_analyst
