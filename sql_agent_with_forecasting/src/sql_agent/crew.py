@@ -5,6 +5,11 @@ from crewai.project import CrewBase, agent, crew, task
 from dotenv import load_dotenv
 
 load_dotenv()
+
+import agentops
+
+agentops.init()
+
 from src.sql_agent.tools.nl2sql_tool import NL2SQLTool
 from crewai_tools import FileWriterTool, FileReadTool, CodeInterpreterTool
 

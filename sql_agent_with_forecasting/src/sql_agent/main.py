@@ -1,8 +1,5 @@
 #!/usr/bin/env python
-import sys
 import warnings
-
-from datetime import datetime
 
 from src.sql_agent.crew import SqlAgent
 
