@@ -109,7 +109,7 @@ Happy building with Agentic AI! 🧠💻
 
 
 ### Workflow
-![Workflow Diagram](agent_workflow2.svg)
+![Workflow Diagram](agent_workflow.svg)
 
 <details>
 <summary>📊 Click to view Agentic Workflow Diagram</summary>
