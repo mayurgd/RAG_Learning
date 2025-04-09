@@ -74,3 +74,61 @@ sql-agent/
 ---
 
 Happy building with Agentic AI! 🧠💻
+
+### AGENT
+### 🔍 Components Breakdown
+
+- **User Input**:  
+  Natural language query provided by the user.
+
+- **SqlAgent**:  
+  Orchestrates the entire workflow using CrewAI, coordinating agents and tasks.
+
+- **Agents**:
+  - `data_engineer`:  
+    Uses `NL2SQLTool` to generate SQL queries from natural language and execute them.
+  - `data_analyst`:  
+    Analyzes the SQL output using Python (`CodeInterpreterTool`) and writes insights to a markdown file.
+
+- **Tasks**:
+  - `query_creation_task`:  
+    Converts natural language into executable SQL queries.
+  - `analysis_task`:  
+    Interprets SQL results, performs analysis, and creates a report.
+
+- **Tools**:
+  - `NL2SQLTool`:  
+    Converts NL → SQL and interacts with SQLite database.
+  - `CodeInterpreterTool`:  
+    Executes Python code for data analysis and visualization.
+  - `FileWriterTool`:  
+    Persists the final analysis output to a markdown report.
+
+- **Output**:  
+  Final markdown report containing insights and analysis is returned to the user.
+
+
+### Workflow
+![Workflow Diagram](agent_workflow2.svg)
+
+<details>
+<summary>📊 Click to view Agentic Workflow Diagram</summary>
+
+```mermaid
+graph TD
+    A["User Input (e.g., 'Analyze sales patterns for product B')"] --> B["crew.kickoff()"]
+    B --> C["SqlAgent.crew()"]
+    C --> D1["data_engineer Agent"]
+    C --> D2["data_analyst Agent"]
+
+    D1 --> E1["query_creation_task"]
+    E1 --> F1["NL2SQLTool (Generate + Execute SQL) + FileWriterTool"]
+
+    D2 --> E2["analysis_task"]
+    E2 --> F2["CodeInterpreterTool + FileWriterTool"]
+
+    F1 --> G["SQL DB (sales.db)"]
+    F2 --> H["Final Report (Markdown)"]
+
+    H --> I["Return Result to User"]
+</details> ```
