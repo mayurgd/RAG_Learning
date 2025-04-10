@@ -1,0 +1,12 @@
+data_gathering_task:
+  description: >
+    Based on the given request {query}. 
+    Focus on:
+    1. Constructing optimized SQL query to retrieve the required data.
+    2. Execute the SQL query and retrieve the dataset.
+    3. Save the retrieved dataset in a JSON file named according to the context
+    Input to the `File Writer Tool` should be a dictionary and must have a 'directory' key with value as 'output'
+  expected_output: >
+    A well-structured dataset containing the relevant database records based on the query,
+    saved as a JSON file in the `output` folder
+  agent: data_engineer
