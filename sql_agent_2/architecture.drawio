@@ -1,0 +1,115 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.3.1 Safari/605.1.15" version="26.2.9">
+  <diagram name="Page-1" id="8DGI31KA0GQ1AmAe_ose">
+    <mxGraphModel dx="1115" dy="767" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="AACIu29SfgsOh7715vZ9-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="AACIu29SfgsOh7715vZ9-1" target="AACIu29SfgsOh7715vZ9-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AACIu29SfgsOh7715vZ9-1" value="USER QUERY" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AACIu29SfgsOh7715vZ9-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="AACIu29SfgsOh7715vZ9-2" target="AACIu29SfgsOh7715vZ9-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AACIu29SfgsOh7715vZ9-2" value="SQL_AGENT_API" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AACIu29SfgsOh7715vZ9-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="AACIu29SfgsOh7715vZ9-4" target="AACIu29SfgsOh7715vZ9-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AACIu29SfgsOh7715vZ9-4" value="data_engineer AGENT" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="190" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AACIu29SfgsOh7715vZ9-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="AACIu29SfgsOh7715vZ9-6" target="AACIu29SfgsOh7715vZ9-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AACIu29SfgsOh7715vZ9-6" value="NL2SQL Tool" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="310" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AACIu29SfgsOh7715vZ9-8" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=classic;startFill=1;" edge="1" parent="1" source="AACIu29SfgsOh7715vZ9-7" target="AACIu29SfgsOh7715vZ9-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AACIu29SfgsOh7715vZ9-7" value="DB" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+          <mxGeometry x="100" y="300" width="60" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="AACIu29SfgsOh7715vZ9-10" value="FileWriter Tool" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="430" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AACIu29SfgsOh7715vZ9-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;startFill=1;" edge="1" parent="1" source="AACIu29SfgsOh7715vZ9-17" target="AACIu29SfgsOh7715vZ9-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AACIu29SfgsOh7715vZ9-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="AACIu29SfgsOh7715vZ9-17" target="AACIu29SfgsOh7715vZ9-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AACIu29SfgsOh7715vZ9-17" value="Storage" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+          <mxGeometry x="460" y="420" width="60" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="AACIu29SfgsOh7715vZ9-18" value="GatherAndMove Tool" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="430" y="560" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AACIu29SfgsOh7715vZ9-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="AACIu29SfgsOh7715vZ9-10" target="AACIu29SfgsOh7715vZ9-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AACIu29SfgsOh7715vZ9-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="AACIu29SfgsOh7715vZ9-20" target="AACIu29SfgsOh7715vZ9-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AACIu29SfgsOh7715vZ9-20" value="data_analyst AGENT" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="430" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AACIu29SfgsOh7715vZ9-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="AACIu29SfgsOh7715vZ9-22" target="AACIu29SfgsOh7715vZ9-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AACIu29SfgsOh7715vZ9-22" value="CodeInterpreter Tool" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="840" y="430" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AACIu29SfgsOh7715vZ9-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;startArrow=classic;startFill=1;" edge="1" parent="1" source="AACIu29SfgsOh7715vZ9-24" target="AACIu29SfgsOh7715vZ9-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AACIu29SfgsOh7715vZ9-24" value="Storage" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+          <mxGeometry x="870" y="540" width="60" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="AACIu29SfgsOh7715vZ9-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="AACIu29SfgsOh7715vZ9-22" target="AACIu29SfgsOh7715vZ9-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AACIu29SfgsOh7715vZ9-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="AACIu29SfgsOh7715vZ9-26" target="AACIu29SfgsOh7715vZ9-28">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AACIu29SfgsOh7715vZ9-26" value="FileWriter Tool" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="430" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AACIu29SfgsOh7715vZ9-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;startArrow=classic;startFill=1;" edge="1" parent="1" source="AACIu29SfgsOh7715vZ9-28" target="AACIu29SfgsOh7715vZ9-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AACIu29SfgsOh7715vZ9-28" value="Storage" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="540" width="60" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="AACIu29SfgsOh7715vZ9-31" value="GatherAndMove Tool" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="950" y="650" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AACIu29SfgsOh7715vZ9-34" value="1. Create SQL Query&lt;div&gt;2. Execute Query&amp;nbsp;&lt;/div&gt;&lt;div&gt;3. Save results to json&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="380" y="190" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AACIu29SfgsOh7715vZ9-35" value="1. Creates SQL query&lt;div&gt;2. Executes query and retrieves result&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="380" y="320" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="AACIu29SfgsOh7715vZ9-36" value="Saves retrieved&amp;nbsp;&lt;div&gt;results to a json file&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="260" y="500" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="AACIu29SfgsOh7715vZ9-38" value="Ensures outputs are stored&amp;nbsp;&lt;div&gt;in output folder if not then moves&amp;nbsp;&lt;/div&gt;&lt;div&gt;generated outputs to output folder&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="400" y="630" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AACIu29SfgsOh7715vZ9-39" value="1. Writes and executes python code to generate&amp;nbsp;&lt;div&gt;&amp;nbsp; &amp;nbsp; visualization and find data insights.&lt;div&gt;2. Summarizes the data distrubution to markdown file&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="620" y="370" width="310" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AACIu29SfgsOh7715vZ9-40" value="Saves retrieved&amp;nbsp;&lt;div&gt;results to a md file&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="380" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="AACIu29SfgsOh7715vZ9-41" value="Ensures outputs are stored&amp;nbsp;&lt;div&gt;in output folder if not then moves&amp;nbsp;&lt;/div&gt;&lt;div&gt;generated outputs to output folder&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="940" y="720" width="200" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
