@@ -12,15 +12,13 @@ agentops.init()
 
 from src.sql_agent.tools.nl2sql_tool import NL2SQLTool
 from src.sql_agent.tools.gather_n_move_tool import GatherAndMoveOutputsTool
-from crewai_tools import FileWriterTool, FileReadTool, CodeInterpreterTool
+from crewai_tools import FileWriterTool, CodeInterpreterTool
 
 # Initialize the tool
 nl2sql = NL2SQLTool(db_uri="sqlite:///src/sql_agent/sales.db")
 gather_n_move = GatherAndMoveOutputsTool(output_dir="outputs")
 file_writer_tool = FileWriterTool()
-code_interpreter = CodeInterpreterTool(
-    user_dockerfile_path="/Users/mayurgd/Documents/CodingSpace/RAG_Learning/sql_agent_2/src/sql_agent/Docker"
-)
+code_interpreter = CodeInterpreterTool(unsafe_mode=True)
 
 
 @CrewBase
