@@ -52,7 +52,7 @@ Run the agent using the following command:
 ```bash
 uvicorn src.sql_agent.main:app --reload
 ```
-<del>python -m src.sql_agent.main
+<del> python -m src.sql_agent.main
 
 > **Note:** Absolute imports are used in this project, so it's important to run the module exactly as shown above.
 
