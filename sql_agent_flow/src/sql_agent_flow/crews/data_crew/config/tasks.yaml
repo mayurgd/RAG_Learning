@@ -1,0 +1,16 @@
+data_engineering_task:
+  description: >
+    For the given user request `{user_query}` and initial SQL query `{sql_query}`,
+    1. Execute the SQL query and retrieve the results
+    2. Review and, if necessary, optimize the SQL query based on the available database schema.
+    3. Save the retrieved dataset in a JSON file inside the `output` folder using FileWriterTool
+    **Note:** 
+    The input key to NL2SQLTool must be `sql_query`.
+    Internally, the agent should remap `sql_query` to `query` before invoking the tool.
+    Input to the File Writer Tool should be a dictionary containing:
+      - the result dataset 
+      - a 'directory' key with value as 'output'
+  expected_output: >
+    A clean, structured dataset containing the database records relevant to the request,
+    saved in JSON format in the `output` folder with an appropriate file name.
+  agent: data_engineer
