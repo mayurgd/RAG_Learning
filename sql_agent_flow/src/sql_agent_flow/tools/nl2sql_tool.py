@@ -1,15 +1,22 @@
 from typing import Any, Type, Union
 from crewai.tools import BaseTool
-from pydantic import BaseModel, Field
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker
+from pydantic import BaseModel, Field, root_validator
 
 
 class NL2SQLToolInput(BaseModel):
-    query: str = Field(
+    sql_query: str = Field(
         title="SQL Query",
         description="The SQL query to execute.",
     )
+
+    @root_validator(pre=True)
+    def normalize_keys(cls, values):
+        # Allow 'query' as alias for 'sql_query'
+        if "query" in values:
+            values["sql_query"] = values.pop("query")
+        return values
 
 
 class NL2SQLTool(BaseTool):
@@ -47,26 +54,26 @@ class NL2SQLTool(BaseTool):
         """Fetch column names and data types for a given table in SQLite."""
         return self.execute_sql(f"PRAGMA table_info({table_name});")
 
-    def _run(self, query: str):
-        """Execute a SQL query and return the results."""
+    def _run(self, sql_query: str):
+        """Execute a SQL sql_query and return the results."""
         try:
-            data = self.execute_sql(query)
+            data = self.execute_sql(sql_query)
         except Exception as exc:
             data = (
                 f"Based on these tables {self.tables} and columns {self.columns}, "
                 "you can create SQL queries to retrieve data from the database. "
-                f"Original request: {query}. Error: {exc}. Please correct the SQL query."
+                f"Original request: {sql_query}. Error: {exc}. Please correct the SQL sql_query."
             )
 
         return data
 
-    def execute_sql(self, query: str) -> Union[list, str]:
-        """Executes a SQL query and returns results as a list of dictionaries or a success message."""
+    def execute_sql(self, sql_query: str) -> Union[list, str]:
+        """Executes a SQL sql_query and returns results as a list of dictionaries or a success message."""
         engine = create_engine(self.db_uri, connect_args={"check_same_thread": False})
         Session = sessionmaker(bind=engine)
         session = Session()
         try:
-            result = session.execute(text(query))
+            result = session.execute(text(sql_query))
             session.commit()
 
             if result.returns_rows:
@@ -74,7 +81,7 @@ class NL2SQLTool(BaseTool):
                 data = [dict(zip(columns, row)) for row in result.fetchall()]
                 return data
             else:
-                return f"Query '{query}' executed successfully"
+                return f"Query '{sql_query}' executed successfully"
 
         except Exception as e:
             session.rollback()

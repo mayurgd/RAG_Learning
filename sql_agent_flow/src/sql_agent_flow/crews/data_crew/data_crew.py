@@ -2,27 +2,33 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+from typing import List, Dict, Any
+from pydantic import BaseModel, Field
+
+# crewai imports
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 
-from tools.nl2sql_tool import NL2SQLTool
-from tools.filewriter_tool import FileWriterTool
+# tools
 from crewai_tools import CodeInterpreterTool
+from src.sql_agent_flow.tools.nl2sql_tool import NL2SQLTool
+from src.sql_agent_flow.tools.filewriter_tool import FileWriterTool
 
 # Initialize the tool
-nl2sql = NL2SQLTool(db_uri="sqlite:///sales.db")
-file_writer_tool = FileWriterTool(directory="output")
-code_interpreter = CodeInterpreterTool(
-    user_dockerfile_path="/Users/mayurgd/Documents/CodingSpace/RAG_Learning/sql_agent_2/src/sql_agent/Docker"
+nl2sql = NL2SQLTool(
+    db_uri="sqlite:////Users/mayurgd/Documents/CodingSpace/RAG_Learning/sql_agent_flow/src/sql_agent_flow/sales.db"
 )
-
-from pydantic import BaseModel, Field
-from typing import List, Dict, Any
-from datetime import datetime
+file_writer_tool = FileWriterTool(directory="output")
 
 
-from pydantic import BaseModel, Field
-from typing import List, Dict, Any
+from crewai import LLM
+
+llm = LLM(
+    model="gpt-4o-mini",
+    temperature=0,  # Higher for more creative outputs
+    timeout=120,  # Seconds to wait for response
+    seed=42,  # For reproducible results
+)
 
 
 class DataGatheringOutput(BaseModel):
@@ -67,12 +73,13 @@ class DataCrew:
             config=self.agents_config["data_engineer"],
             verbose=True,
             tools=[nl2sql, file_writer_tool],
+            llm=llm,
         )
 
     @task
-    def data_gathering_task(self) -> Task:
+    def data_engineering_task(self) -> Task:
         return Task(
-            config=self.tasks_config["data_gathering_task"],
+            config=self.tasks_config["data_engineering_task"],
             output_pydantic=DataGatheringOutput,
         )
 

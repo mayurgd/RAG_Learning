@@ -1,0 +1,15 @@
+analysis_task:
+  description: >
+    Perform a thorough analysis of the dataset retrieved for the request: {query}.
+    Dataset is saved in location {output_file_path}.
+    Use the FileReadTool to gather the gist of the dataset.
+    Once the dataset schema is known, write Python code to generate meaningful visualizations.
+    Code should load the data from the output_file_path only and should not take the data directly from prev tools output.
+    Ensure all visualizations are saved in the 'output' folder and no plots are displayed as pop-up windows.
+
+  expected_output: >
+    Visualization plots that show trends in the dataset, saved in the 'output' directory 
+    without displaying interactive or popup figures.
+    Sales graphs with respect to time should be bar graphs only.
+
+  agent: data_analyst
