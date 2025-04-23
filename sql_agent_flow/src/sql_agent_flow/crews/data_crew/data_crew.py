@@ -6,6 +6,7 @@ from typing import List, Dict, Any
 from pydantic import BaseModel, Field
 
 # crewai imports
+from crewai import LLM
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 
@@ -15,14 +16,10 @@ from src.sql_agent_flow.tools.nl2sql_tool import NL2SQLTool
 from src.sql_agent_flow.tools.filewriter_tool import FileWriterTool
 
 # Initialize the tool
-nl2sql = NL2SQLTool(
-    db_uri="sqlite:////Users/mayurgd/Documents/CodingSpace/RAG_Learning/sql_agent_flow/src/sql_agent_flow/sales.db"
-)
+nl2sql = NL2SQLTool(db_uri="sqlite:///src/sql_agent_flow/sales.db")
 file_writer_tool = FileWriterTool(directory="output")
 
-
-from crewai import LLM
-
+# Initialize the LLM
 llm = LLM(
     model="gpt-4o-mini",
     temperature=0,  # Higher for more creative outputs

@@ -3,10 +3,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-from crewai_tools import CodeInterpreterTool, FileReadTool
+from crewai_tools import FileReadTool
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from src.sql_agent_flow.tools.filewriter_tool import FileWriterTool
+from src.sql_agent_flow.tools.code_interpreter_tool import CodeInterpreterTool
 
 # Initialize the tool
 # file_writer_tool = FileWriterTool(directory="output")

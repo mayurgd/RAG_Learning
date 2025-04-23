@@ -10,11 +10,9 @@ from src.sql_agent_flow.crews.data_crew.data_crew import DataCrew
 from src.sql_agent_flow.crews.analysis_crew.analysis_crew import AnalysisCrew
 
 # Initialize the NL2SQLTool
-nl2sql_tool = NL2SQLTool(
-    db_uri="sqlite:////Users/mayurgd/Documents/CodingSpace/RAG_Learning/sql_agent_flow/src/sql_agent_flow/sales.db"
-)
+nl2sql_tool = NL2SQLTool(db_uri="sqlite:///src/sql_agent_flow/sales.db")
 
-# Advanced configuration with detailed parameters
+# Initialize the LLM
 llm = LLM(
     model="gpt-4o-mini",
     temperature=0,  # Higher for more creative outputs
@@ -93,13 +91,13 @@ class DataFlow(Flow[DataFlowState]):
             )
         )
 
-        state.query_result = result.raw
+        state.query_result = result.to_dict()
 
         # Save query result to file
         with open("output/query_result.json", "w") as f:
-            json.dump(state.query_result, f, indent=2)
+            json.dump(state.query_result, f)
 
-        print("Data gathering complete.\n", result.raw)
+        print("Data gathering complete.\n", state.query_result)
         return state
 
     @listen(gather_data)
@@ -107,11 +105,11 @@ class DataFlow(Flow[DataFlowState]):
         """Analyze the gathered data using AnalysisCrew"""
         print("Analyzing data...")
 
-        output_file_path = json.loads(state.query_result)["output_file_path"]
+        output_file_path = state.query_result["output_file_path"]
 
         if not os.path.isfile(output_file_path):
             with open(output_file_path, "w") as f:
-                json.dump(json.loads(state.query_result)["results"], f)
+                json.dump(state.query_result["results"], f)
 
         # Kick off the analysis crew with the gathered data
         result = (
